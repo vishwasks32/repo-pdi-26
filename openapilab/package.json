@@ -1,0 +1,17 @@
+{
+  "name": "openapilab",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "generate-api": "openapi-generator-cli generate -i api-docs.yaml -g typescript-angular -o generated-sources/openapi --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "openapi-generator-cli": "^1.0.0"
+  },
+  "devDependencies": {}
+}
