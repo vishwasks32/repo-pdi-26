@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding and Removing Elements</title>
+    <style>
+        .is-hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adding and Hiding Elements
+    </h1>
+    <p id="elementHide">This is a sample text which can be hidden</p>
+    <button type="button" id="hideBtn">Hide</button>
+    <button type="button" id="addBtn">Add Element</button>
+
+    <p id="addingEle">
+
+    </p>
+
+    <script>
+        let elementHide = document.getElementById('elementHide');
+        let hideBtn = document.getElementById('hideBtn');
+        let addEle = document.getElementById('addingEle');
+        let addBtn = document.getElementById('addBtn');
+
+        function addNewEle(){
+            let newEle = document.createElement('div');
+            newEle.textContent = "Hello";
+
+            addEle.appendChild(newEle);
+        }
+        function hideEle(){
+            // elementHide.classList.toggle('is-hidden');
+            elementHide.remove();
+        }
+
+        hideBtn.addEventListener('click', hideEle);
+        addBtn.addEventListener('click', addNewEle)
+
+    </script>
+</body>
+</html>

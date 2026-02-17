@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- <html lang="en" data-theme="dark"> -->
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>A Simple Contact Form</h1>
+        <button id="switchBtn" type="button">Switch Theme</button>
+    </header>
+    <section id="contact-info">
+        <fieldset>
+            <legend>
+                <h2>Contact Information</h2>
+            </legend>
+            <form action="">
+                <label class="input-labels" for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="John Doe" /><br><br>
+                
+                <label class="input-labels" for="emailId">Email:</label>
+                <input type="email" id="emailId" name="emailId" placeholder="john.doe@example.com"/><br><br>
+                
+                <label class="input-labels" for="phonenumber">Phone Number:</label>
+                <input type="tel" pattern="[0-9]{10}" id="phonenumber" name="phonenumber" placeholder="1234567890(10 digits)"/>
+                <br><br>
+                
+                <label class="input-labels" for="age">Age:</label>
+                <input type="number" placeholder="age" min="0" max="100"/><br><br>
+                
+                <label class="input-labels" for="city">City:</label>
+                <select name="city" id="city">
+                    <option value="">--Please Choose a City--</option>
+                    <option value="bengaluru">Bengaluru</option>
+                    <option value="mysuru">Mysuru</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="pune">Pune</option>
+                </select>
+                <br><br>
+                <label class="input-labels" for="states">State:</label>
+                <input list="state" name="state">
+                <datalist id="state">
+                    <option value="karnataka">Karnataka</option>
+                    <option value="andhra">Andhra</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tamilnadu">Tamil Nadu</option>
+                </datalist>
+                <br><br>
+                
+                <div  role="radiogroup" aria-labelledby="group-label">
+                    <label class="input-labels" id="group-label">Gender:</label><br><br>
+                    <label id="male" for="male">Male</label>
+                    <input role="radio" aria-checked="true" type="radio" name="gender" id="male" value="male" checked>
+    
+                    <label id="female" for="female">Female</label>
+                    <input role="radio" aria-checked="false" type="radio" name="gender" id="female" value="female">
+                </div>
+                <br><br>
+
+                <label class="input-labels" for="profile-pic">Profile Picture:</label>
+                <input type="file" name="profile-pic" id="profile-pic" accept="image/*" capture="environment" />
+                <br><br>
+
+                <button type="submit">
+                    Send
+                </button>
+                <button type="reset">Reset</button>
+            </form>
+        </fieldset>
+    </section>
+    <script>
+        const currentTheme = localStorage.getItem('theme');
+        let switchBtn = document.getElementById('switchBtn')
+        if(!currentTheme){
+            document.documentElement.setAttribute('data-theme', currentTheme);
+        }
+
+        function toggleTheme(){
+            const currentTheme = localStorage.getItem('theme');
+            if(currentTheme === 'dark'){
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme','light');
+            }else{
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme','dark');
+            }
+        }
+
+        switchBtn.addEventListener('click', toggleTheme);
+        
+    </script>
+</body>
+</html>
