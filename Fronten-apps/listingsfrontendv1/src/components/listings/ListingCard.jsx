@@ -4,6 +4,7 @@ function ListingCard({ listing }) {
     const [ showModal, setShowModal ] = useState(false);
 
   const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-sm">
@@ -25,7 +26,7 @@ function ListingCard({ listing }) {
           </div>
         </div>
       </div>
-      <ListingModal key={listing.id} listing={listing} showModal = {showModal}/>
+      <ListingModal key={listing.id} listing={listing} showModal = {showModal} onClose={handleClose}/>
     </>
   );
 }

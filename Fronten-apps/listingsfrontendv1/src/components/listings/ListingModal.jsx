@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-function ListingModal({ listing, showModal }) {
+function ListingModal({ listing, showModal, onClose }) {
   const modalRef = useRef(listing);
 
   useEffect(()=>{
@@ -12,8 +12,8 @@ function ListingModal({ listing, showModal }) {
   },[showModal]);
   return (
     <>
-      <dialog ref={modalRef} className="modal">
-        <div className="modal-box">
+      <dialog ref={modalRef} className="modal" onClose={onClose}>
+        <div className="modal-box w-11/12 max-w-5xl">
           <figure className="w-full">
             <img 
             src={listing.image? listing.image: "images/house.jpg"}
@@ -23,7 +23,7 @@ function ListingModal({ listing, showModal }) {
           </figure>
         </div>
         <form method="dialog" className="modal-backdrop">
-          <button>close</button>
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={onClose}>X</button>
         </form>
       </dialog>
     </>
