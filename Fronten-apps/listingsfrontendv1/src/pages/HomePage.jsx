@@ -16,6 +16,7 @@ export default function HomePage(){
       })
   })
 
+  if(listings && listings.length != 0){
     return(
         <div  className="grid grid-cols-3 grid-rows-none gap-4 p-5">
           {listings.map((listing)=>
@@ -25,4 +26,8 @@ export default function HomePage(){
           )}
         </div>
     )
+  } else{
+    return (<h3>Listings Data Not Found</h3>)
+  }
+
 }

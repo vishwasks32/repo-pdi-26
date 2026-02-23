@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const connectDB = require('./db/db');
 const routes = require('./routes');
 const ApiError = require('./utils/ApiError');
@@ -13,7 +14,7 @@ dotenv.config();
 //connect to mongoDB
 connectDB();
 
-
+app.use(cors());
 app.use(express.json());
 // app.use('/api/v1/listings', listingRouter);
 app.use('/api/v1',routes);
