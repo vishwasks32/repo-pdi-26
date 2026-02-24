@@ -22,7 +22,6 @@ export default async function Page() {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Id</th>
                         <th>Title</th>
                         <th>City</th>
