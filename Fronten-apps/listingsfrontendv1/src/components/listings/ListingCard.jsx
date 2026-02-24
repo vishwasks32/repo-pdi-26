@@ -8,7 +8,7 @@ function ListingCard({ listing }) {
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-sm">
-        <figure className="cursor-pointer">
+        <figure className="cursor-pointer ">
           <img
             src={listing.image ? listing.image : "images/house.jpg"}
             alt="listing image"
