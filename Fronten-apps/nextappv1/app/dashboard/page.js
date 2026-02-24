@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 async function getAllListings() {
@@ -25,6 +26,7 @@ export default async function Page() {
                         <th>Id</th>
                         <th>Title</th>
                         <th>City</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,7 @@ export default async function Page() {
                             <td>{listing.id}</td>
                             <td>{listing.name}</td>
                             <td>{listing.city}</td>
+                            <td><Link href={`/listings/${listing.id}`} className='btn btn-sm btn-primary'>Details</Link></td>
                         </tr>
                     ))
 

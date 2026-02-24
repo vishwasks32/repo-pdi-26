@@ -2,6 +2,7 @@ const ListingDTO = require('../dtos/listingDTO');
 const ListingService = require('../services/listingService');
 const ApiError = require('../utils/ApiError');
 const ApiResponse  = require('../utils/ApiResponse');
+const mongoose = require('mongoose');
 
 const listingController = {
     async getListings(req, res) {
@@ -34,15 +35,23 @@ const listingController = {
 
     async getSingleListing(req,res,next){
         try{
-            const { id } = req.params;        
+            const { id } = req.params;
+            console.log(typeof id, id.length);
+            if(!mongoose.Types.ObjectId.isValid(id)){
+               throw new ApiError(400, "Invalid ID");
+            }
+            
+            // const listing = await ListingService.getListing(new mongoose.Types.ObjectId(id));
             const listing = await ListingService.getListing(id);
+            
             const listingDTO = new ListingDTO(listing);
-
+            // console.log(listingDTO);
             if(!listing){
                 throw new ApiError(404, "Listing Not Found");
             }
 
-            return new ApiResponse(200, listingDTO, "Listing fetched Successfully");
+            return res
+            .status(200).json(new ApiResponse(200, listingDTO, "Listing fetched Successfully"));
 
         } catch(error){
             next(error);

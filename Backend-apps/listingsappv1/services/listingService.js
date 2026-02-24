@@ -1,7 +1,4 @@
 const Listing = require('../models/listings');
-const mongoose = require('mongoose');
-
-
 const listingService = {
     async getAllListings() {
         const listings = Listing.find();
@@ -13,8 +10,13 @@ const listingService = {
         return listing;
     },
 
-    async getListing(listingId){        
-        const listing = await Listing.findById(listingId).lean().exec();
+    async getListing(listingId){      
+        console.log(typeof listingId, listingId.length);  
+        // const listing = await Listing.findById(listingId).lean().exec();
+        // const listing = await Listing.findById("67dd2fe421036760a26e0818").lean().exec();
+        const listing = await Listing.findById("67dd2fe421036760a26e0818");
+        
+        
         // const listing = await Listing.findOne({ _id: listingId}).lean();
         return listing;
     }
