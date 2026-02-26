@@ -4,6 +4,7 @@ public class Book implements LibraryItem{
     private String isbn;
     private String title;
     private String author;
+    private boolean isAvaliable = true;
 
     public Book() {
         this.isbn = "UNKNOWN";
@@ -50,6 +51,14 @@ public class Book implements LibraryItem{
         if(!author.isEmpty()){
             this.author = author;
         }
+    }
+
+    public boolean isAvaliable() {
+        return isAvaliable;
+    }
+
+    public void setAvaliable(boolean avaliable) {
+        isAvaliable = avaliable;
     }
 
     @Override
