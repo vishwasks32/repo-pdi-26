@@ -4,6 +4,7 @@ import com.cloudthat.exceptions.BookExistsException;
 import com.cloudthat.models.Book;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class Library {
@@ -35,4 +36,16 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
+    public CompletableFuture<List<Book>> searchByTitleAsync(String keyword){
+        return CompletableFuture.supplyAsync(()-> {
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            return bookMap.values().stream()
+                    .filter(book -> book.getTitle().toLowerCase().contains(keyword.toLowerCase()))
+                    .collect(Collectors.toList());
+                });
+    }
 }

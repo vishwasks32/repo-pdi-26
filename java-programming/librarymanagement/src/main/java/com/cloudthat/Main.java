@@ -7,13 +7,15 @@ import com.cloudthat.utils.CSVReader;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         Library library = new Library();
         CSVReader csvreader = new CSVReader();
@@ -43,5 +45,16 @@ public class Main {
         Optional<Book> searchedBook = library.findBookByIsbn("9781856134033");
         searchedBook.ifPresentOrElse(printBook, ()->System.out.println("Book Not Found"));
 
+        System.out.println("Searching by Title");
+        List<Book> bookList = library.searchByTitleAsync("Harry").get();
+        bookList.forEach(printBook);
+//        CompletableFuture<List<Book>> future = library.searchByTitleAsync("Harry");
+//        future.thenAccept(bookList ->{
+//            if (bookList.isEmpty()) {
+//                System.out.println("No books found");
+//            }else {
+//                bookList.forEach(printBook);
+//            }
+//        });
     }
 }
