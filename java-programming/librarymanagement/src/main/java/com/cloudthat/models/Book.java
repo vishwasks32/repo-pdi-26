@@ -1,6 +1,8 @@
-package com.cloudthat;
+package com.cloudthat.models;
 
-public class Book implements LibraryItem{
+import com.cloudthat.library.LibraryItem;
+
+public class Book implements LibraryItem {
     private String isbn;
     private String title;
     private String author;

@@ -1,4 +1,7 @@
-package com.cloudthat;
+package com.cloudthat.library;
+
+import com.cloudthat.exceptions.BookExistsException;
+import com.cloudthat.models.Book;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,6 +18,10 @@ public class Library {
     }
 
     public void addBook(Book book){
+
+        if(bookMap.containsKey(book.getIsbn())){
+            throw new BookExistsException("Book Exists in Library");
+        }
         bookMap.putIfAbsent(book.getIsbn(), book);
     }
 

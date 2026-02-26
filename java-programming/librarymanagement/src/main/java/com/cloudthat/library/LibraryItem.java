@@ -1,4 +1,4 @@
-package com.cloudthat;
+package com.cloudthat.library;
 
 public interface LibraryItem {
     String getTitle();

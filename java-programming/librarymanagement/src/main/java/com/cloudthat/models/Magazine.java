@@ -1,6 +1,6 @@
-package com.cloudthat;
+package com.cloudthat.models;
 
-public class Magazine extends Book{
+public class Magazine extends Book {
     private int issueNumber;
     private String issueDate;
 
