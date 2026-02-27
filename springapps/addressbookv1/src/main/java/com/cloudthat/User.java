@@ -1,10 +1,13 @@
 package com.cloudthat;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class User {
     private String userName;
     private  String emailId;
 //    private String phoneNumber;
 
+    @Autowired
     private PhoneNumber phoneNumber;
 
     public String getUserName() {

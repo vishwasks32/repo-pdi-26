@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd">
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="user" class="com.cloudthat.User" scope="prototype">
-        <!-- collaborators and configuration for this bean go here -->
-        <property name="userName" value="John" />
-        <property name="emailId" value="john@cloudthat.com" />
+<!--    <bean id="user" class="com.cloudthat.User" scope="prototype">-->
+<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
+<!--        <property name="userName" value="John" />-->
+<!--        <property name="emailId" value="john@cloudthat.com" />-->
 <!--        <property name="phoneNumber" value="1234567890" />-->
-        <property name="phoneNumber" ref="phonenumber"/>
+<!--        <property name="phoneNumber" ref="phonenumber"/>-->
 
-    </bean>
-    <bean id="phonenumber" class="com.cloudthat.PhoneNumber" >
+<!--    </bean>-->
+<!--    <bean id="phonenumber" class="com.cloudthat.PhoneNumber" >-->
 <!--        <constructor-arg name="countryCode" value="+91"/>-->
 <!--        <constructor-arg name="number" value="1234567890"/>-->
-        <constructor-arg name="countryCode" value="1234567890"/>
-        <constructor-arg  name="number" value="+91"/>
+<!--    -->
 
 <!--        <property name="countryCode" value="+91"/>-->
 <!--        <property name="number" value="1234567890"/>-->
-    </bean>
-
-    <!-- more bean definitions go here -->
-<!--    <bean id="user1" class="com.cloudthat.User">-->
-<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
-<!--        <property name="userName" value="John1" />-->
-<!--        <property name="emailId" value="john1@cloudthat.com" />-->
-<!--        <property name="phoneNumber" value="1234567890" />-->
 <!--    </bean>-->
+    <context:annotation-config />
 </beans>
