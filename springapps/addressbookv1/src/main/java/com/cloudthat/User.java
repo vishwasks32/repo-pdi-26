@@ -3,7 +3,9 @@ package com.cloudthat;
 public class User {
     private String userName;
     private  String emailId;
-    private String phoneNumber;
+//    private String phoneNumber;
+
+    private PhoneNumber phoneNumber;
 
     public String getUserName() {
         return userName;
@@ -21,11 +23,19 @@ public class User {
         this.emailId = emailId;
     }
 
-    public String getPhoneNumber() {
+    public PhoneNumber getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    //    public String getPhoneNumber() {
+//        return phoneNumber;
+//    }
+//
+//    public void setPhoneNumber(String phoneNumber) {
+//        this.phoneNumber = phoneNumber;
+//    }
 }

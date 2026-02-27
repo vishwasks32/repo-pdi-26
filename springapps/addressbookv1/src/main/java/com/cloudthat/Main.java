@@ -14,5 +14,16 @@ public class Main {
 
         System.out.println("User name:" + u1.getUserName());
         System.out.println("User email id: "+ u1.getEmailId());
+        System.out.println("User email id: "+ u1.getPhoneNumber());
+
+        User u2 = (User) ctx.getBean("user");
+
+        System.out.println("User name:" + u2.getUserName());
+        System.out.println("User email id: "+ u2.getEmailId());
+
+        u2.setEmailId("vishwas@cloudthat.com");
+        System.out.println("User2 email id: "+ u2.getEmailId());
+        System.out.println("User1 email id: "+ u1.getEmailId());
+
     }
 }
