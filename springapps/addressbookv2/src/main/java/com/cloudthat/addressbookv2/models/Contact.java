@@ -27,8 +27,6 @@ public class Contact {
     @Convert(converter = GenderConverter.class)
     private Gender Gender;
 
-
-
     @Convert(converter = org.hibernate.type.NumericBooleanConverter.class)
     private Boolean isActive = true;
 
@@ -42,6 +40,9 @@ public class Contact {
 
     @Embedded
     private Address address;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private List<Tag> tags = new ArrayList<Tag>();
 
     public Long getId() {
         return id;
@@ -67,7 +68,61 @@ public class Contact {
         this.emailId = emailId;
     }
 
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
 
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    public Gender getGender() {
+        return Gender;
+    }
+
+    public void setGender(Gender gender) {
+        Gender = gender;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 
     public Contact() {
     }
