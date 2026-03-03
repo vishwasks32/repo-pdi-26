@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity(name = "Contact")
@@ -130,5 +131,22 @@ public class Contact {
     public void addPhoneNumber(PhoneNumber phoneNumber){
         phoneNumbers.add(phoneNumber);
         phoneNumber.setContact(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", contactName='" + contactName + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", phoneNumbers=" + phoneNumbers +
+                ", gender=" + gender +
+                ", isActive=" + isActive +
+                ", profilePicture=" + Arrays.toString(profilePicture) +
+                ", dob=" + dob +
+                ", createdAt=" + createdAt +
+                ", address=" + address +
+                ", tags=" + tags +
+                '}';
     }
 }

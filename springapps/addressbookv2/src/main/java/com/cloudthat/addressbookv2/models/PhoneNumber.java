@@ -1,5 +1,6 @@
 package com.cloudthat.addressbookv2.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,8 @@ public class PhoneNumber {
     private Integer number;
 
     @ManyToOne
+    @JoinColumn(name = "contactId")
+    @JsonBackReference
     private Contact contact;
 
     @Enumerated(EnumType.ORDINAL)
@@ -59,5 +62,16 @@ public class PhoneNumber {
     }
 
     public PhoneNumber() {
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "id=" + id +
+                ", countryCode='" + countryCode + '\'' +
+                ", number=" + number +
+                ", contact=" + contact +
+                ", phoneType=" + phoneType +
+                '}';
     }
 }

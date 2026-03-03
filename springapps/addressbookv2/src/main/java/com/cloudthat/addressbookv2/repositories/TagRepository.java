@@ -1,0 +1,12 @@
+package com.cloudthat.addressbookv2.repositories;
+
+import com.cloudthat.addressbookv2.models.Tag;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface TagRepository extends JpaRepository<Tag, Long> {
+    public Optional<Tag> findByTagName(String tagName);
+}
