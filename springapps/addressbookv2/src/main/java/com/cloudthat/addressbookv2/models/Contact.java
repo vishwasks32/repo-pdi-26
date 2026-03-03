@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Contact")
 @Table(name = "AddressBook")
@@ -19,14 +21,13 @@ public class Contact {
     private String contactName;
     private String emailId;
 
-    @Column(length = 10)
-    private Integer phoneNumber;
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+    private List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 
     @Convert(converter = GenderConverter.class)
     private Gender Gender;
 
-    @Enumerated(EnumType.ORDINAL)
-    private PhoneType phoneType;
+
 
     @Convert(converter = org.hibernate.type.NumericBooleanConverter.class)
     private Boolean isActive = true;
@@ -66,31 +67,8 @@ public class Contact {
         this.emailId = emailId;
     }
 
-    public Integer getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(Integer phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Contact(Long id, String contactName, String emailId, Integer phoneNumber) {
-        this.id = id;
-        this.contactName = contactName;
-        this.emailId = emailId;
-        this.phoneNumber = phoneNumber;
-    }
 
     public Contact() {
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "id=" + id +
-                ", contactName='" + contactName + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                '}';
     }
 }
