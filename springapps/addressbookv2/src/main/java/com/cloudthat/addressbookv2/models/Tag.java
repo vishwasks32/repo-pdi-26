@@ -1,6 +1,8 @@
 package com.cloudthat.addressbookv2.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,8 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 3, max=20)
     private String tagName;
 
     @ManyToMany(mappedBy = "tags")

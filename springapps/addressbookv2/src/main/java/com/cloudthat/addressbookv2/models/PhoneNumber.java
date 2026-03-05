@@ -2,6 +2,8 @@ package com.cloudthat.addressbookv2.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class PhoneNumber {
@@ -10,7 +12,10 @@ public class PhoneNumber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(regexp = "^\\+[1-9]\\d{0,3}$")
     private String countryCode;
+
+    @Digits(integer = 10, fraction = 0)
     private Integer number;
 
     @ManyToOne
