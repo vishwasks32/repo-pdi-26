@@ -1,5 +1,7 @@
 package com.cloudthat.addressbookv2.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -17,6 +19,8 @@ public class Tag {
     @Size(min = 3, max=20)
     private String tagName;
 
+//    @JsonBackReference
+    @JsonIgnore
     @ManyToMany(mappedBy = "tags")
     private List<Contact> contacts = new ArrayList<Contact>();
 

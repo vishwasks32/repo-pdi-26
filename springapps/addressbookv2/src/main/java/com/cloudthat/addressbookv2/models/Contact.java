@@ -1,5 +1,6 @@
 package com.cloudthat.addressbookv2.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.AssertTrue;
@@ -52,6 +53,7 @@ public class Contact {
     @Embedded
     private Address address;
 
+//    @JsonManagedReference
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Tag> tags = new ArrayList<Tag>();
 
