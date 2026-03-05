@@ -1,6 +1,11 @@
 package com.cloudthat.addressbookv2.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
@@ -18,22 +23,27 @@ public class Contact {
     @Column(name = "contactId")
     private Long id;
 
+    @NotBlank
     @Column(name="contactName", length = 50)
     private String contactName;
+
+    @Email
     private String emailId;
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
-    private List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
+    private List<@Valid PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 
     @Convert(converter = GenderConverter.class)
     private Gender gender;
 
+    @AssertTrue
     @Convert(converter = org.hibernate.type.NumericBooleanConverter.class)
     private Boolean isActive = true;
 
     @Lob
     private byte[] profilePicture;
 
+    @PastOrPresent
     private LocalDate dob;
 
     @CreationTimestamp
