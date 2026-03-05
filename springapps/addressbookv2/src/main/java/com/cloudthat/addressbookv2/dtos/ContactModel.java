@@ -15,6 +15,6 @@ public record ContactModel(
         LocalDate dob,
         AddressModel address,
         List<PhoneNumberModel> phoneNumbers,
-        List<String> tagNames
+        List<TagModel> tags
 ) {
 }

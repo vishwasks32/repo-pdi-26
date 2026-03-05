@@ -2,6 +2,7 @@ package com.cloudthat.addressbookv2.mappers;
 
 import com.cloudthat.addressbookv2.dtos.ContactModel;
 import com.cloudthat.addressbookv2.dtos.PhoneNumberModel;
+import com.cloudthat.addressbookv2.dtos.TagModel;
 import com.cloudthat.addressbookv2.models.Contact;
 import com.cloudthat.addressbookv2.models.Gender;
 import com.cloudthat.addressbookv2.models.PhoneNumber;
@@ -19,6 +20,9 @@ public class ContactMapper {
 
     @Autowired
     private AddressMapper addressMapper;
+
+    @Autowired
+    private TagMapper tagMapper;
 
     public Contact toContact(ContactModel contactModel){
         if (contactModel == null) return null;
@@ -48,6 +52,10 @@ public class ContactMapper {
                 .map(phoneNumber -> phoneNumberMapper.toPhoneNumberModel(phoneNumber))
                 .toList();
 
+        List<TagModel> tagModels = contact.getTags().stream()
+                .map(tag -> tagMapper.toTagModel(tag))
+                .toList();
+
         return new ContactModel(
                 contact.getId(),
                 contact.getContactName(),
@@ -56,8 +64,8 @@ public class ContactMapper {
                 contact.getProfilePicture(),
                 contact.getDob(),
                 addressMapper.toAddressModel(contact.getAddress()),
-                phoneNumberModels
-//                contact.getTags()
+                phoneNumberModels,
+                tagModels
         );
     }
 }

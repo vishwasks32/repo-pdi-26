@@ -10,7 +10,7 @@ public record AddressModel(
    Integer doorNumber,
    String building,
    String addressLine1,
-   String AddressLine2,
+   String addressLine2,
    String city,
    String state,
    String zipcode

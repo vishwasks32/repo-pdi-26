@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -60,16 +61,18 @@ public class ContactService {
 //            );
 //        }
 //
-//        if(contact.getTags() != null){
-//            List<Tag> managedTags = contact.getTags().stream()
-//                    .map(tag -> tagRepository.findByTagName(tag.getTagName())
-//                            .orElseGet(()->tagRepository.save(tag)))
-//                    .collect(Collectors.toList());
-//
-//            contact.setTags(managedTags);
-//        }
+        List<Tag> managedTags = new ArrayList<Tag>();
+        if(contactModel.tags() != null){
+            managedTags = contactModel.tags().stream()
+                    .map(tag -> tagRepository.findByTagName(tag.tagName())
+                            .orElseGet(()->tagRepository.save(new Tag(tag.tagName()))))
+                    .toList();
+        }
 
-        Contact newContact = contactRepository.save(contactMapper.toContact(contactModel));
+        Contact savingContact = contactMapper.toContact(contactModel);
+        savingContact.setTags(managedTags);
+
+        Contact newContact = contactRepository.save(savingContact);
         return contactMapper.toContactModel(newContact);
     }
 

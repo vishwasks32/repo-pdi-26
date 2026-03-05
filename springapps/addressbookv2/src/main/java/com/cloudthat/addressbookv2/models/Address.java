@@ -20,7 +20,7 @@ public class Address {
     @Pattern(regexp = "^[a-zA-Z0-9]+$")
     private String addressLine1;
     @Pattern(regexp = "^[a-zA-Z0-9]+$")
-    private String AddressLine2;
+    private String addressLine2;
 
     @NotBlank
     @Length(min=3, max = 30)
@@ -35,4 +35,64 @@ public class Address {
     @Digits(integer = 6, fraction = 0)
     @Length(min = 6, max = 6)
     private String zipcode;
+
+
+    public Integer getDoorNumber() {
+        return doorNumber;
+    }
+
+    public void setDoorNumber(Integer doorNumber) {
+        this.doorNumber = doorNumber;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public Address() {
+    }
 }
