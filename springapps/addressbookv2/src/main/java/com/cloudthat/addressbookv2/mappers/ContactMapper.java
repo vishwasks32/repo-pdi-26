@@ -5,6 +5,7 @@ import com.cloudthat.addressbookv2.dtos.PhoneNumberModel;
 import com.cloudthat.addressbookv2.models.Contact;
 import com.cloudthat.addressbookv2.models.Gender;
 import com.cloudthat.addressbookv2.models.PhoneNumber;
+import com.cloudthat.addressbookv2.models.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ public class ContactMapper {
 
     @Autowired
     private PhoneNumberMapper phoneNumberMapper;
+
+    @Autowired
+    private AddressMapper addressMapper;
 
     public Contact toContact(ContactModel contactModel){
         if (contactModel == null) return null;
@@ -31,6 +35,8 @@ public class ContactMapper {
                 .toList();
 
         newContact.setPhoneNumbers(phoneNumbers);
+        newContact.setAddress(addressMapper.toAddress(contactModel.address()));
+
         return newContact;
     }
 
@@ -49,7 +55,7 @@ public class ContactMapper {
                 contact.getGender(),
                 contact.getProfilePicture(),
                 contact.getDob(),
-//                contact.getAddress(),
+                addressMapper.toAddressModel(contact.getAddress()),
                 phoneNumberModels
 //                contact.getTags()
         );
