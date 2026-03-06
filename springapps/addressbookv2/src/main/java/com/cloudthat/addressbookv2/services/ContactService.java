@@ -51,9 +51,9 @@ public class ContactService{
 
     public ContactModel createContact(ContactModel contactModel) {
 
-        Contact contact = contactRepository.findByEmailId(contactModel.emailId()).get();
-        if(contact != null){
-            throw new BaseBusinessException("Contact with the email already exists",ErrorType.DUPLICATE_CONTACT);
+        Optional<Contact> contact = contactRepository.findByEmailId(contactModel.emailId());
+        if(!contact.isEmpty()){
+            throw new BaseBusinessException(ErrorType.DUPLICATE_CONTACT.getMessage(), ErrorType.DUPLICATE_CONTACT);
         }
 
         List<Tag> managedTags = new ArrayList<Tag>();
