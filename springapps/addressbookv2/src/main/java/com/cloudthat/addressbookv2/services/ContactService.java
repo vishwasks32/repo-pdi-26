@@ -2,6 +2,8 @@ package com.cloudthat.addressbookv2.services;
 
 import com.cloudthat.addressbookv2.config.Loggable;
 import com.cloudthat.addressbookv2.dtos.ContactModel;
+import com.cloudthat.addressbookv2.exceptions.BaseBusinessException;
+import com.cloudthat.addressbookv2.exceptions.ErrorType;
 import com.cloudthat.addressbookv2.mappers.ContactMapper;
 import com.cloudthat.addressbookv2.models.Contact;
 import com.cloudthat.addressbookv2.models.Tag;
@@ -48,6 +50,11 @@ public class ContactService{
 
 
     public ContactModel createContact(ContactModel contactModel) {
+
+        Contact contact = contactRepository.findByEmailId(contactModel.emailId()).get();
+        if(contact != null){
+            throw new BaseBusinessException("Contact with the email already exists",ErrorType.DUPLICATE_CONTACT);
+        }
 
         List<Tag> managedTags = new ArrayList<Tag>();
         if(contactModel.tags() != null){

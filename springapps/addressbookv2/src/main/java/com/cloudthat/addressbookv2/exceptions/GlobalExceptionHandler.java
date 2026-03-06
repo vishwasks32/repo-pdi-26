@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    public ProblemDetail handleMethodArgumentNotValid(
+    @Override
+    public ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex,
-            @Nullable Object body,
             HttpHeaders headers,
             HttpStatusCode statusCode,
             WebRequest request) {
@@ -39,6 +39,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 ));
 
         problemDetail.setProperty("errors", errors);
+
+        return new ResponseEntity<>(problemDetail,headers, statusCode);
+    }
+
+    @ExceptionHandler(BaseBusinessException.class)
+    public ProblemDetail handleBusinessExceptions(BaseBusinessException ex){
+        ErrorType errorType = ex.getErrorType();
+
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle(errorType.name());
 
         return problemDetail;
     }
