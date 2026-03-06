@@ -7,6 +7,7 @@ import com.cloudthat.addressbookv2.models.Contact;
 import com.cloudthat.addressbookv2.models.Tag;
 import com.cloudthat.addressbookv2.repositories.ContactRepository;
 import com.cloudthat.addressbookv2.repositories.TagRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+@Slf4j
 @Service
-public class ContactService implements Loggable {
+public class ContactService{
 
+    private static final Logger log = LoggerFactory.getLogger(ContactService.class);
     @Autowired
     private ContactRepository contactRepository;
 
@@ -37,6 +39,7 @@ public class ContactService implements Loggable {
 
     public Page<ContactModel> getAllContacts(Pageable pageable) {
         Page<Contact> contactPage = contactRepository.findAll(pageable);
+        log.debug("Contact Objects: {}",contactPage);
         Page<ContactModel> modelPage = contactPage.map(contact -> contactMapper.toContactModel(contact));
 
         return modelPage;
@@ -57,7 +60,7 @@ public class ContactService implements Loggable {
         Contact savingContact = contactMapper.toContact(contactModel);
         savingContact.setTags(managedTags);
 
-        log().info("Saving the contact with email: {}", savingContact.getEmailId());
+        log.info("Saving the contact with email: {}", savingContact.getEmailId());
         Contact newContact = contactRepository.save(savingContact);
         return contactMapper.toContactModel(newContact);
     }
