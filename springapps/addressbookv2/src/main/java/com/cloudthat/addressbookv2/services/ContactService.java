@@ -1,6 +1,5 @@
 package com.cloudthat.addressbookv2.services;
 
-import com.cloudthat.addressbookv2.config.Loggable;
 import com.cloudthat.addressbookv2.dtos.ContactModel;
 import com.cloudthat.addressbookv2.exceptions.BaseBusinessException;
 import com.cloudthat.addressbookv2.exceptions.ErrorType;
@@ -36,8 +35,6 @@ public class ContactService{
     @Autowired
     private TagRepository tagRepository;
 
-//    @Autowired
-//    private static final Logger logger = LoggerFactory.getLogger(ContactService.class);
 
     public Page<ContactModel> getAllContacts(Pageable pageable) {
         Page<Contact> contactPage = contactRepository.findAll(pageable);
@@ -52,7 +49,7 @@ public class ContactService{
     public ContactModel createContact(ContactModel contactModel) {
 
         Optional<Contact> contact = contactRepository.findByEmailId(contactModel.emailId());
-        if(!contact.isEmpty()){
+        if(contact.isPresent()){
             throw new BaseBusinessException(ErrorType.DUPLICATE_CONTACT.getMessage(), ErrorType.DUPLICATE_CONTACT);
         }
 

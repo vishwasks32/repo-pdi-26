@@ -38,17 +38,17 @@ public class ContactController {
         return ResponseEntity.status(200).body(new ApiResponse<>(true,"Contacts fetched successfully",page,0L));
     }
 
-    @GetMapping("/{id}")
-    public Optional<Contact> getContact(@PathVariable Long id){
-        return  contactService.getSingleContact(id);
-    }
-
-    @GetMapping("/search")
-    public Optional<Contact> search(
-            @RequestParam String email
-    ){
-        return contactService.getContactFromEmail(email);
-    }
+//    @GetMapping("/{id}")
+//    public Optional<Contact> getContact(@PathVariable Long id){
+//        return  contactService.getSingleContact(id);
+//    }
+//
+//    @GetMapping("/search")
+//    public Optional<Contact> search(
+//            @RequestParam String email
+//    ){
+//        return contactService.getContactFromEmail(email);
+//    }
 
     @PostMapping
     public ResponseEntity<ApiResponse<ContactModel>> create(@Valid @RequestBody ContactModel contactModel){

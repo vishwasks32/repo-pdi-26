@@ -24,3 +24,8 @@ logging:
     com.cloudthat.services: DEBUG
   file:
     name: 'logs/app-debug.log'
+springdoc:
+  swagger-ui:
+    path: '/swagger-ui.html'
+  api-docs:
+    path: '/api/v1/api-docs'
