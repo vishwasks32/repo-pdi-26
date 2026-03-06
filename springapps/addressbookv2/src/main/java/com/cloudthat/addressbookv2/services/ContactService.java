@@ -1,5 +1,6 @@
 package com.cloudthat.addressbookv2.services;
 
+import com.cloudthat.addressbookv2.config.Loggable;
 import com.cloudthat.addressbookv2.dtos.ContactModel;
 import com.cloudthat.addressbookv2.mappers.ContactMapper;
 import com.cloudthat.addressbookv2.models.Contact;
@@ -20,7 +21,7 @@ import java.util.Optional;
 
 
 @Service
-public class ContactService {
+public class ContactService implements Loggable {
 
     @Autowired
     private ContactRepository contactRepository;
@@ -31,8 +32,8 @@ public class ContactService {
     @Autowired
     private TagRepository tagRepository;
 
-    @Autowired
-    private static final Logger logger = LoggerFactory.getLogger(ContactService.class);
+//    @Autowired
+//    private static final Logger logger = LoggerFactory.getLogger(ContactService.class);
 
     public Page<ContactModel> getAllContacts(Pageable pageable) {
         Page<Contact> contactPage = contactRepository.findAll(pageable);
@@ -56,7 +57,7 @@ public class ContactService {
         Contact savingContact = contactMapper.toContact(contactModel);
         savingContact.setTags(managedTags);
 
-        logger.info("Saving the contact with email: {}", savingContact.getEmailId());
+        log().info("Saving the contact with email: {}", savingContact.getEmailId());
         Contact newContact = contactRepository.save(savingContact);
         return contactMapper.toContactModel(newContact);
     }
