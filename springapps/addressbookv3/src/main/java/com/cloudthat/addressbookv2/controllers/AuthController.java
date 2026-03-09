@@ -72,7 +72,7 @@ public class AuthController {
         final String token =
                 jwtUtility.generateToken(userDetails);
 
-
+        log.debug("JWT Token: {}",token);
 
         return new ResponseEntity<JwtResponse>(new JwtResponse(token,"Token generated Successfully",true, userDetails.getUsername(),userDetails.getAuthorities().iterator().next().toString()),HttpStatus.OK);
     }

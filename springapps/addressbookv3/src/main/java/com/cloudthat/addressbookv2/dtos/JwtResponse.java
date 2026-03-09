@@ -12,12 +12,16 @@ public class JwtResponse {
     private String jwtToken;
     private String message;
     private Boolean success;
-    private String email;
+    private String username;
     private String role;
 
-    public JwtResponse(Object o, String message, boolean b, Object o1, Object o2) {
+    public JwtResponse(String jwtToken, String message, Boolean success, String username, String role) {
+        this.jwtToken = jwtToken;
+        this.message = message;
+        this.success = success;
+        this.username = username;
+        this.role = role;
     }
-
 
     public String getJwtToken() {
         return jwtToken;
@@ -44,11 +48,11 @@ public class JwtResponse {
     }
 
     public String getEmail() {
-        return email;
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String username) {
+        this.username = username;
     }
 
     public String getRole() {
@@ -65,7 +69,7 @@ public class JwtResponse {
                 "jwtToken='" + jwtToken + '\'' +
                 ", message='" + message + '\'' +
                 ", success=" + success +
-                ", email='" + email + '\'' +
+                ", email='" + username + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
