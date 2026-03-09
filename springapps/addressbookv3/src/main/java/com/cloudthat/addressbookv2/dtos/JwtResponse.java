@@ -58,6 +58,15 @@ public class JwtResponse {
     public void setRole(String role) {
         this.role = role;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "JwtResponse{" +
+                "jwtToken='" + jwtToken + '\'' +
+                ", message='" + message + '\'' +
+                ", success=" + success +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

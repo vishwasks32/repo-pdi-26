@@ -15,7 +15,8 @@ public class UserModel {
     @Email(message = "Enter valid email id")
     private String username;
     private String password;
-    private Role role;
+
+    private Role role = Role.USER;
 
     public String getUsername() {
         return username;
