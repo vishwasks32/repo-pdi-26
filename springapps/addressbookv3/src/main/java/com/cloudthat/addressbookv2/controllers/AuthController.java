@@ -5,6 +5,7 @@ import com.cloudthat.addressbookv2.dtos.JwtRequest;
 import com.cloudthat.addressbookv2.dtos.JwtResponse;
 import com.cloudthat.addressbookv2.dtos.UserModel;
 import com.cloudthat.addressbookv2.entities.User;
+import com.cloudthat.addressbookv2.services.CustomUserDetailsService;
 import com.cloudthat.addressbookv2.services.UserService;
 import com.cloudthat.addressbookv2.utility.JWTUtility;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +31,9 @@ public class AuthController {
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
     private AuthenticationManager authenticationProvider;
@@ -65,7 +69,7 @@ public class AuthController {
         }
 
         final UserDetails userDetails
-                = userService.loadUserByUsername(jwtRequest.getUsername());
+                = userDetailsService.loadUserByUsername(jwtRequest.getUsername());
 
         log.debug("User Details: {}",userDetails);
 
