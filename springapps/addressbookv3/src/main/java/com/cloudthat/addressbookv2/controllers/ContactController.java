@@ -3,7 +3,6 @@ package com.cloudthat.addressbookv2.controllers;
 import com.cloudthat.addressbookv2.config.AppConfig;
 import com.cloudthat.addressbookv2.dtos.ApiResponse;
 import com.cloudthat.addressbookv2.dtos.ContactModel;
-import com.cloudthat.addressbookv2.models.Contact;
 import com.cloudthat.addressbookv2.services.ContactService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/contacts")

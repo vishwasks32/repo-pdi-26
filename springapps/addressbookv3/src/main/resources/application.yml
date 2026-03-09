@@ -1,0 +1,31 @@
+app:
+    support-email: vishwas@cloudthat.com
+server:
+    port: 8086
+spring:
+    application:
+        name: addressbookv2
+    datasource:
+        driver-class-name: 'com.mysql.cj.jdbc.Driver'
+        username: 'root'
+        url: 'jdbc:mysql://localhost:3306/contactmanagerdb'
+        password: 'root'
+    jpa:
+        show_sql: 'true'
+        hibernate:
+          format_sql: 'true'
+          ddl-auto: 'create-drop'
+    mvc:
+      problem details:
+        enabled: true
+logging:
+  level:
+    root: DEBUG
+    com.cloudthat.services: DEBUG
+  file:
+    name: 'logs/app-debug.log'
+springdoc:
+  swagger-ui:
+    path: '/swagger-ui.html'
+  api-docs:
+    path: '/api/v1/api-docs'
