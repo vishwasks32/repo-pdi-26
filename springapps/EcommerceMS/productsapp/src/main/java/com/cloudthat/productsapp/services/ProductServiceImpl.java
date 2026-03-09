@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -35,5 +36,10 @@ public class ProductServiceImpl implements ProductService{
                 .map(product -> productMapper.toProductModel(product))
                 .toList();
         return productModels;
+    }
+
+    @Override
+    public Optional<ProductModel> getProduct(Long id) {
+        return Optional.empty();
     }
 }
