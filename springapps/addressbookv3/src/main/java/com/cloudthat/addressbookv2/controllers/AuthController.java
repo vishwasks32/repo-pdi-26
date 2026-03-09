@@ -6,11 +6,13 @@ import com.cloudthat.addressbookv2.dtos.JwtResponse;
 import com.cloudthat.addressbookv2.dtos.UserModel;
 import com.cloudthat.addressbookv2.entities.User;
 import com.cloudthat.addressbookv2.services.UserService;
+import com.cloudthat.addressbookv2.utility.JWTUtility;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,10 +28,17 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthenticationManager authenticationProvider;
+
+
+    @Autowired
+    private JWTUtility jwtUtility;
+
     @PostMapping("register")
     public ResponseEntity<ApiResponse> registeruser(@RequestBody UserModel userModel, final HttpServletRequest request){
         // add check for email exists in DB
-        if(userService.existsByEmail(userModel.getEmail())){
+        if(userService.existsByEmail(userModel.getUsername())){
             return new ResponseEntity<ApiResponse>(new ApiResponse(false,"Email is already taken!", null, 0L), HttpStatus.BAD_REQUEST);
         }
         User registeredUser = userService.registerUser(userModel);
@@ -53,7 +62,7 @@ public class AuthController {
         }
 
         final UserDetails userDetails
-                = customUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
+                = userService.loadUserByUsername(jwtRequest.getUsername());
 
         final String token =
                 jwtUtility.generateToken(userDetails);

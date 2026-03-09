@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
 import java.util.Collection;
@@ -18,7 +19,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,6 +46,7 @@ public class User {
         this.id = id;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
@@ -95,7 +97,7 @@ public class User {
     }
 
     //getAuthorities, isAccountNonExpired
-    public Boolean isAccountNonExpired(){
+    public boolean isAccountNonExpired(){
         return true;
     }
 
@@ -103,4 +105,8 @@ public class User {
         return List.of(new SimpleGrantedAuthority("ROLE_"+this.getRole()));
     }
 
+    @Override
+    public boolean isEnabled() {
+        return this.isActive;
+    }
 }

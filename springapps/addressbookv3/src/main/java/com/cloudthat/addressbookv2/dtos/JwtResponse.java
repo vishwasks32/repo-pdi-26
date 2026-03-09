@@ -15,6 +15,9 @@ public class JwtResponse {
     private String email;
     private String role;
 
+    public JwtResponse(Object o, String message, boolean b, Object o1, Object o2) {
+    }
+
 
     public String getJwtToken() {
         return jwtToken;
@@ -55,4 +58,6 @@ public class JwtResponse {
     public void setRole(String role) {
         this.role = role;
     }
+    
+    
 }

@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/v1/contacts")
 public class ContactController {
@@ -35,12 +38,12 @@ public class ContactController {
         return ResponseEntity.status(200).body(new ApiResponse<>(true,"Contacts fetched successfully",page,0L));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<ContactModel>> getContact(@PathVariable Long id){
-        ContactModel contactModel = contactService.getSingleContact(id);
-
-        return ResponseEntity.ok(new ApiResponse<>(true,"Contact fetched successfully",contactModel,0L));
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<ApiResponse<ContactModel>> getContact(@PathVariable Long id){
+//        Optional<ContactModel> contactModel = contactService.getSingleContact(id);
+//
+//        return ResponseEntity.ok(new ApiResponse<>(true,"Contact fetched successfully",contactModel,0L));
+//    }
 //
 //    @GetMapping("/search")
 //    public Optional<Contact> search(
