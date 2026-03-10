@@ -1,0 +1,32 @@
+server:
+  port: 8083
+spring:
+    application:
+        name: paymentsapp
+    cloud:
+      function:
+        definition: processPayment
+      stream:
+        bindings:
+          processPayment-in-0:
+            destination: order-events
+        kafka:
+          binder:
+            brokers: localhost:9092
+
+    datasource:
+      driver-class-name: 'com.mysql.cj.jdbc.Driver'
+      username: 'root'
+      url: 'jdbc:mysql://localhost:3306/paymentmsdb'
+      password: 'root'
+    jpa:
+      show_sql: 'true'
+      hibernate:
+        format_sql: 'true'
+        ddl-auto: 'create'
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true

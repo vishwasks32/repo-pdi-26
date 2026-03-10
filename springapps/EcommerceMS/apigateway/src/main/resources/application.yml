@@ -16,8 +16,7 @@ spring:
                   name: CircuitBreaker
                   args:
                     name: ordersappCB
-                    fallbackUri:
-                        forward: /ordersappFallBack
+                    fallbackUri: forward:/ordersappFallBack
               - id: productsapp
                 uri: lb://productsapp
                 predicates:
@@ -26,8 +25,7 @@ spring:
                   name: CircuitBreaker
                   args:
                     name: productsappCB
-                    fallbackUri:
-                      forward: /productsappFallBack
+                    fallbackUri: forward:/productsappFallBack
 logging:
   level:
     root: DEBUG

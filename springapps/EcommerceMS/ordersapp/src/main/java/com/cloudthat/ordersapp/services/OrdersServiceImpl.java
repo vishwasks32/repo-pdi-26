@@ -10,6 +10,7 @@ import com.cloudthat.ordersapp.models.ApiResponse;
 import com.cloudthat.ordersapp.models.OrdersModel;
 import com.cloudthat.ordersapp.repositories.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -27,6 +28,8 @@ public class OrdersServiceImpl implements OrdersService {
     @Autowired
     private OrdersMapper ordersMapper;
 
+    @Autowired private StreamBridge streamBridge;
+
     @Override
     public OrdersModel create(OrdersModel ordersModel) {
         // Check if product is present
@@ -37,6 +40,9 @@ public class OrdersServiceImpl implements OrdersService {
         }
 
         Orders order = ordersRepository.save(ordersMapper.toOrders(ordersModel));
+
+        // Publish to Kafka topic 'order-out-0'
+        streamBridge.send("order-out-0", order);
 
         return ordersMapper.toOrdersModel(order);
 

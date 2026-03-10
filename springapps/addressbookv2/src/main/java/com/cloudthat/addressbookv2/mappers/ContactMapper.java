@@ -4,9 +4,7 @@ import com.cloudthat.addressbookv2.dtos.ContactModel;
 import com.cloudthat.addressbookv2.dtos.PhoneNumberModel;
 import com.cloudthat.addressbookv2.dtos.TagModel;
 import com.cloudthat.addressbookv2.models.Contact;
-import com.cloudthat.addressbookv2.models.Gender;
 import com.cloudthat.addressbookv2.models.PhoneNumber;
-import com.cloudthat.addressbookv2.models.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

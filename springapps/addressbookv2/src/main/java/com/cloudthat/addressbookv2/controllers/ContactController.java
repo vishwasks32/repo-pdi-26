@@ -38,12 +38,12 @@ public class ContactController {
         return ResponseEntity.status(200).body(new ApiResponse<>(true,"Contacts fetched successfully",page,0L));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<ContactModel>> getContact(@PathVariable Long id){
-        ContactModel contactModel = contactService.getSingleContact(id);
-
-        return ResponseEntity.ok(new ApiResponse<>(true,"Contact fetched successfully",contactModel,0L));
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<ApiResponse<ContactModel>> getContact(@PathVariable Long id){
+//        Optional<ContactModel> contactModel = contactService.getSingleContact(id);
+//
+//        return ResponseEntity.ok(new ApiResponse<>(true,"Contact fetched successfully",contactModel,0L));
+//    }
 //
 //    @GetMapping("/search")
 //    public Optional<Contact> search(
@@ -59,7 +59,7 @@ public class ContactController {
             return ResponseEntity.status(400).body(new ApiResponse<>(false, "Cannot Create Contact",null,0L));
         }
 
-        return ResponseEntity.status(201).body(new ApiResponse<>(true,"Contact Created Successfully",savedContactModel,0L));
+        return ResponseEntity.status(201).body(new ApiResponse<>(true,"Contact created successfully",savedContactModel,0L));
     }
 
     @GetMapping("/help")

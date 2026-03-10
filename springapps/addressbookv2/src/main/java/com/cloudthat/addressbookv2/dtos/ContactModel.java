@@ -1,6 +1,5 @@
 package com.cloudthat.addressbookv2.dtos;
 
-import com.cloudthat.addressbookv2.models.Address;
 import com.cloudthat.addressbookv2.models.Gender;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
