@@ -12,10 +12,22 @@ spring:
                 uri: lb://ordersapp
                 predicates:
                   - Path=/api/orders/**
+                filters:
+                  name: CircuitBreaker
+                  args:
+                    name: ordersappCB
+                    fallbackUri:
+                        forward: /ordersappFallBack
               - id: productsapp
                 uri: lb://productsapp
                 predicates:
                   - Path=/api/products/**
+                filters:
+                  name: CircuitBreaker
+                  args:
+                    name: productsappCB
+                    fallbackUri:
+                      forward: /productsappFallBack
 logging:
   level:
     root: DEBUG
