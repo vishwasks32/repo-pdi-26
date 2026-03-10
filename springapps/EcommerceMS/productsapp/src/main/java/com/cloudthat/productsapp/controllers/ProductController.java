@@ -38,12 +38,12 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<Optional<ProductModel>>> getproduct(@PathVariable("id") Long id){
 
-        Optional<ProductModel> productModel = productService.getProduct(id);
+        Optional<ProductModel> productModel = Optional.ofNullable(productService.getProduct(id));
 
         if(productModel.isEmpty()){
             return ResponseEntity.status(404).body(new ApiResponse<>(false,"Products Not Found", null,0L));
         }
 
-        return ResponseEntity.ok(new ApiResponse<>(true,"Products fetchd successfully", productModel,0L));
+        return ResponseEntity.ok(new ApiResponse<>(true,"Products fetched successfully", productModel,0L));
     }
 }

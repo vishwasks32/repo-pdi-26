@@ -10,5 +10,5 @@ public interface ProductService {
 
     List<ProductModel> getAllProducts();
 
-    Optional<ProductModel> getProduct(Long id);
+    ProductModel getProduct(Long id);
 }

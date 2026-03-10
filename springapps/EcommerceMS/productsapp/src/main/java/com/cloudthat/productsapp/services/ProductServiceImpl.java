@@ -39,7 +39,14 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Optional<ProductModel> getProduct(Long id) {
-        return Optional.empty();
+    public ProductModel getProduct(Long id) {
+        Product product = productRepository.findById(id).get();
+
+        if(product != null){
+            return productMapper.toProductModel(product);
+        }
+
+        return null;
+
     }
 }
