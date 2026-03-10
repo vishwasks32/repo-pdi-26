@@ -1,4 +1,4 @@
-package com.cloudthat.addressbookv2.exceptions;
+package com.cloudthat.ordersapp.exceptions;
 
 public class BaseBusinessException extends RuntimeException {
     private final ErrorType errorType;

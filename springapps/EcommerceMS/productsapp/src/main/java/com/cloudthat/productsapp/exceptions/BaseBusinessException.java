@@ -1,4 +1,6 @@
-package com.cloudthat.ordersapp.exceptions;
+package com.cloudthat.productsapp.exceptions;
+
+import com.cloudthat.productsapp.exceptions.ErrorType;
 
 public class BaseBusinessException extends RuntimeException {
     private final ErrorType errorType;

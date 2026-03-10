@@ -1,4 +1,4 @@
-package com.cloudthat.productsapp.exceptions;
+package com.cloudthat.ordersapp.exceptions;
 
 
 import lombok.extern.slf4j.Slf4j;

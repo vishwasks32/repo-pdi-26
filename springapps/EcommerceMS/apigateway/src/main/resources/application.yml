@@ -1,0 +1,32 @@
+server:
+  port: 9090
+spring:
+    application:
+        name: apigateway
+    cloud:
+      gateway:
+        mvc:
+          routes:
+            - id: ordersapp
+              uri: lb://ordersapp
+              predicates:
+                Path=/api/orders/**
+
+            - id: productsapp
+              uri: lb://productsapp
+              predicates:
+                Path=/api/products/**
+      discovery:
+        enabled: true
+logging:
+  level:
+    root: DEBUG
+    org.springframework.cloudgateway: DEBUG
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health, info

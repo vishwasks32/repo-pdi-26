@@ -1,6 +1,8 @@
 package com.cloudthat.ordersapp.services;
 
 import com.cloudthat.ordersapp.entities.Orders;
+import com.cloudthat.ordersapp.exceptions.BaseBusinessException;
+import com.cloudthat.ordersapp.exceptions.ErrorType;
 import com.cloudthat.ordersapp.external.ProductClient;
 import com.cloudthat.ordersapp.external.ProductModel;
 import com.cloudthat.ordersapp.mappers.OrdersMapper;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.prefs.BackingStoreException;
 
 @Service
 public class OrdersServiceImpl implements OrdersService {
@@ -30,7 +33,7 @@ public class OrdersServiceImpl implements OrdersService {
         ApiResponse<Optional<ProductModel>> apiResponse = productClient.getProductById(ordersModel.getProductId());
 
         if(!apiResponse.success()) {
-            throw new RuntimeException("cannot place order as product is not present");
+            throw new BaseBusinessException(ErrorType.PRODUCT_NOT_FOUND.getMessage(), ErrorType.PRODUCT_NOT_FOUND);
         }
 
         Orders order = ordersRepository.save(ordersMapper.toOrders(ordersModel));

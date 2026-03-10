@@ -1,10 +1,10 @@
-package com.cloudthat.addressbookv2.exceptions;
+package com.cloudthat.ordersapp.exceptions;
 
 import org.springframework.http.HttpStatus;
 
 public enum ErrorType {
-    CONTACT_NOT_FOUND(HttpStatus.NOT_FOUND, "The requested contact does not exist"),
-    DUPLICATE_CONTACT(HttpStatus.CONFLICT, "A contact with this email already exists");
+    PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "The requested product does not exist");
+//    DUPLICATE_CONTACT(HttpStatus.CONFLICT, "A contact with this email already exists");
 
     private final HttpStatus status;
     private final String message;

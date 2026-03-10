@@ -1,6 +1,8 @@
 package com.cloudthat.productsapp.services;
 
 import com.cloudthat.productsapp.entities.Product;
+import com.cloudthat.productsapp.exceptions.BaseBusinessException;
+import com.cloudthat.productsapp.exceptions.ErrorType;
 import com.cloudthat.productsapp.mappers.ProductMapper;
 import com.cloudthat.productsapp.models.ProductModel;
 import com.cloudthat.productsapp.repositories.ProductRepository;
@@ -46,7 +48,7 @@ public class ProductServiceImpl implements ProductService{
             return productMapper.toProductModel(product);
         }
 
-        return null;
+        throw new BaseBusinessException(ErrorType.PRODUCT_NOT_FOUND.getMessage(), ErrorType.PRODUCT_NOT_FOUND);
 
     }
 }

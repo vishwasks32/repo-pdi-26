@@ -1,4 +1,4 @@
-package com.cloudthat.ordersapp.exceptions;
+package com.cloudthat.productsapp.exceptions;
 
 import org.springframework.http.HttpStatus;
 
