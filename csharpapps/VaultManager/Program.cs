@@ -1,6 +1,6 @@
 ﻿namespace VaultManager.App;
+
 using VaultManager.Vault;
-using VaultManager.SecutrityUtils;
 using VaultManager.DataModel;
 
 class Program
@@ -38,13 +38,17 @@ class Program
                         EncryptedPassword = password
                     };
 
-                    await vault.SaveEntryAsync(newEntry);
+                    await vault.SaveEntryAsync(newEntry, masterKey);
                     break;
                 case "2":
                     var entries = vault.GetPasswordEntries();
                     Console.WriteLine("--------Entries in Vault ---");
-                    foreach(var e in entries)
-                        Console.WriteLine($"Service: {e.ServiceName}|Username: {e.UserName}|Password: {e.EncryptedPassword}");
+                    foreach (var e in entries)
+                    {
+                        // Decrypt on the fly using the current session's masterKey
+                        string decrypted = SecutrityUtils.SecurityUtils.Decrypt(e.EncryptedPassword, masterKey);
+                        Console.WriteLine($"Service: {e.ServiceName} | User: {e.UserName} | Pass: {decrypted}");
+                    }
                     break;
 
                 case "3":
