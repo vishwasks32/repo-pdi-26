@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KiranaAppV1.Infrastructure.Data;
 
-public class KiranaAppDbContext: DbContext
+public class KiranaAppDbContext(DbContextOptions<KiranaAppDbContext> options) : DbContext(options)
 {
-    public KiranaAppDbContext(DbContextOptions<KiranaAppDbContext> options) : base(options)
-    {
-        
-    }
-
     public DbSet<Product> Products { get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
