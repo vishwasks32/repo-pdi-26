@@ -32,4 +32,19 @@ public class ProductsControllerTests
 
         Assert.Equal(productId, returnedProduct.Id);
     }
+
+    [Fact]
+    public async Task GetById_ReturnsNotFound_WhenProductDoesNotExist()
+    {
+        // Arrange
+        _mockService.Setup(s=> s.GetProductDetailsAsync(It.IsAny<int>()))
+                .ReturnsAsync((ProductResponseDTO)null);
+        
+        // Act
+        var result = await _controller.GetById(999);
+
+        //Assert
+        Assert.IsType<NotFoundResult>(result);
+    }
+
 }
