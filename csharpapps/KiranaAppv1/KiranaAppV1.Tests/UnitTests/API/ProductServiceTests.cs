@@ -5,7 +5,7 @@ using KiranaAppV1.Core.Interfaces;
 using KiranaAppV1.Core.Entities;
 using AutoMapper;
 using KiranaAppV1.Infrastructure.Mappings;
-using Microsoft.Extensions.Logging;
+
 
 public class ProductServiceTests
 {
@@ -14,13 +14,11 @@ public class ProductServiceTests
 
     private readonly IMapper _mapper;
 
-    private readonly Mock<LoggerFactory> _mockLogger;
-
     public ProductServiceTests()
     {
         _mockRepo = new Mock<IProductRepository>();
         
-        var config = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>(), (ILoggerFactory)_mockLogger);
+        var config = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
         _mapper = config.CreateMapper();
 
         _service = new ProductService(_mockRepo.Object, _mapper);
