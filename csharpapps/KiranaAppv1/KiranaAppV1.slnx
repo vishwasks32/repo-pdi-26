@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="KiranaAppV1.API/KiranaAppV1.API.csproj" />
+  <Project Path="KiranaAppV1.Core/KiranaAppV1.Core.csproj" />
+  <Project Path="KiranaAppV1.Infrastructure/KiranaAppV1.Infrastructure.csproj" />
+  <Project Path="KiranaAppV1.Tests/KiranaAppV1.Tests.csproj" />
+</Solution>
