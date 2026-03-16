@@ -3,9 +3,9 @@ using KiranaAppV1.Core.DTOs;
 using KiranaAppV1.Core.DTOs.Requests;
 using KiranaAppV1.Core.DTOs.Validators;
 
-public class ProductValidatorTests(ProductRequestValidator validationRules)
+public class ProductValidatorTests
 {
-    private readonly ProductRequestValidator _validator = validationRules;
+    private readonly ProductRequestValidator _validator = new();
 
     [Fact]
     public void Should_Have_Error_When_Name_Is_Empty()

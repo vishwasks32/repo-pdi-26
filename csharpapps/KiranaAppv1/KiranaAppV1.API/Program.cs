@@ -1,7 +1,10 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using KiranaAppV1.Core.DTOs.Validators;
+using KiranaAppV1.Core.Interfaces;
 using KiranaAppV1.Infrastructure.Data;
+using KiranaAppV1.Infrastructure.Repositories;
+using KiranaAppV1.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +21,9 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddValidatorsFromAssemblyContaining<ProductRequestValidator>();
 builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 

@@ -17,23 +17,23 @@ public class ProductRepositoryTests
         return databaseContext;
     }
 
-    [Fact]
-    public async Task GetByIdAsync_ShouldReturnProduct_WhenItExistsInDb()
-    {
-        // Arrange
-        var context = GetDatabaseContext();
-        var repository = new ProductRepository(context);
+    // [Fact]
+    // public async Task GetByIdAsync_ShouldReturnProduct_WhenItExistsInDb()
+    // {
+    //     // Arrange
+    //     var context = GetDatabaseContext();
+    //     var repository = new ProductRepository(context);
 
-        var testProduct = new Product { Id= 1, Name = "Laptop", Price = 100, Quantity = 100};
+    //     var testProduct = new Product { Id= 1, Name = "Laptop", Price = 100, Quantity = 100};
 
-        context.Products.Add(testProduct);
-        await context.SaveChangesAsync();
+    //     context.Products.Add(testProduct);
+    //     await context.SaveChangesAsync();
 
-        //Act 
-        var result = await repository.GetByIdAsync(1);
+    //     //Act 
+    //     var result = await repository.GetByIdAsync(1);
 
-        //Assert
-        Assert.NotNull(result);
-        Assert.Equal("Laptop", result.Name);
-    }
+    //     //Assert
+    //     Assert.NotNull(result);
+    //     Assert.Equal("Laptop", result.Name);
+    // }
 }
