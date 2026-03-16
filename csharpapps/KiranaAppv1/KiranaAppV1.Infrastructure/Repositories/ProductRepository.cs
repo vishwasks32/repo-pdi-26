@@ -1,6 +1,7 @@
 using KiranaAppV1.Core.Entities;
 using KiranaAppV1.Core.Interfaces;
 using KiranaAppV1.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace KiranaAppV1.Infrastructure.Repositories;
 
