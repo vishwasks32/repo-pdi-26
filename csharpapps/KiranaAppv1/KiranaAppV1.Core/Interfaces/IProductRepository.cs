@@ -5,4 +5,9 @@ namespace KiranaAppV1.Core.Interfaces;
 public interface IProductRepository
 {
     Task<Product> GetByIdAsync(int productId);
+    Task<Product> AddAsync(Product product);
+    Task<IEnumerable<Product>> GetProductsAsync();
+    Task<Product> UpdateAsync(Product product);
+    Task DeleteAsync(int id);
+
 }

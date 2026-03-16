@@ -1,4 +1,5 @@
 using AutoMapper;
+using KiranaAppV1.Core.DTOs.Requests;
 using KiranaAppV1.Core.DTOs.Responses;
 using KiranaAppV1.Core.Entities;
 
@@ -12,6 +13,6 @@ public class MappingProfile : Profile
         CreateMap<Product, ProductResponseDTO>();
 
         //DTO -> Entity
-        // CreateMap<ProductRequestDTO, Product>();
+        CreateMap<ProductRequestDTO, Product>();
     }
 }
