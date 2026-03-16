@@ -10,18 +10,15 @@ public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
 
-    private readonly ILogger _logger;
-
-    public ProductsController(IProductService service, ILogger logger)
+    public ProductsController(IProductService service)
     {
         _service = service;
-        _logger = logger;
+
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] ProductRequestDTO productRequest)
     {
-        _logger.LogDebug("The Create Product called with {productRequest}", productRequest);
         Console.WriteLine("Hit the Create Product");
         var product = await _service.CreateProduct(productRequest);
         if (product == null) return NotFound();
