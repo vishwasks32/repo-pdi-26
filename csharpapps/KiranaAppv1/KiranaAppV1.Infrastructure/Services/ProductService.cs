@@ -29,7 +29,10 @@ public class ProductService : IProductService
     {
         var product = await _repository.GetByIdAsync(id);
 
-        if(product == null) return null;
+        if(product == null)
+        {
+            throw new KeyNotFoundException("Product does not exist");
+        }
 
         return _mapper.Map<ProductResponseDTO>(product);
     }
