@@ -10,9 +10,11 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         //Entity -> DTO
-        CreateMap<Product, ProductResponseDTO>();
+        CreateMap<Product, ProductResponseDTO>()
+        .ForMember(dest => dest.Category, opt => opt.MapFrom(src=> src.Category.ToString()));
 
         //DTO -> Entity
-        CreateMap<ProductRequestDTO, Product>();
+        CreateMap<ProductRequestDTO, Product>()
+        .ForMember(dest=>dest.Category, opt=> opt.MapFrom(src=> Enum.Parse<ProductCategory>(src.Category, true)));
     }
 }

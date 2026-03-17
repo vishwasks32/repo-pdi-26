@@ -2,6 +2,7 @@ namespace KiranaAppV1.Core.DTOs.Validators;
 
 using FluentValidation;
 using KiranaAppV1.Core.DTOs.Requests;
+using KiranaAppV1.Core.Entities;
 
 public class ProductRequestValidator: AbstractValidator<ProductRequestDTO>
 {
@@ -20,6 +21,10 @@ public class ProductRequestValidator: AbstractValidator<ProductRequestDTO>
         RuleFor(x=>x.Name)
         .Must(name => !name.Contains("forbidden"))
         .WithMessage("Name contains Illegal words");
+
+        RuleFor(x=> x.Category)
+        .IsEnumName(typeof(ProductCategory), caseSensitive: false)
+        .WithMessage("Invalid Category. Can be only FRESH, PACKAGED, SNACKS, FROZEN");
 
     }
 }

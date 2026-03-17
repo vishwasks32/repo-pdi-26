@@ -10,5 +10,5 @@ public class ProductResponseDTO
     public double Price { get; set;}
     public int Quantity { get; set;}
 
-    public ProductCategory Category {get; set;}
+    public string Category {get; set;} = string.Empty;
 }
