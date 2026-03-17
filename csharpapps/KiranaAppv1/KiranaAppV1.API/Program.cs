@@ -53,7 +53,10 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var jwtsettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(jwtsettings["key"]);
+var key = Encoding.UTF8.GetBytes(jwtsettings["Key"]);
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>

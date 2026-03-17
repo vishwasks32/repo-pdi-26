@@ -7,7 +7,7 @@ namespace KiranaAppV1.Core.Interfaces;
 public interface IAuthService
 {
     Task<IdentityResult> RegisterAsync(UserRequestDTO userRequest);
-    Task<UserResponseDTO> LoginAsync( UserRequestDTO userRequestDTO);
+    Task<UserResponseDTO> LoginAsync( LoginRequestDTO loginRequest);
     Task<bool> IsUserExistsAsync(string username);
     Task<UserResponseDTO> GetUserByUsernameAsync(string username);
 
