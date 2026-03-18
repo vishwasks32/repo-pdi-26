@@ -10,4 +10,11 @@ public interface IProductRepository
     Task<Product> UpdateAsync(Product product);
     Task DeleteAsync(int id);
 
+    Task<(IEnumerable<Product> Items, int TotalCount)> GetPagedProductsAsync(
+        string? searchTerm,
+        ProductCategory? category,
+        string? sortBy,
+        int pageNumber,
+        int pagSize
+    );
 }

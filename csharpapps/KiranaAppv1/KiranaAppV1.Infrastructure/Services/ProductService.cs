@@ -67,4 +67,34 @@ public class ProductService : IProductService
         var productDto = _mapper.Map<ProductResponseDTO>(product);
         return productDto;
     }
+
+    public async Task<PagedResponse<IEnumerable<ProductResponseDTO>>> GetPagedResponseAsync(ProductParameters parameters)
+    {
+        // Convert String to Enum
+        ProductCategory? categoryEnum = null;
+
+        if(!string.IsNullOrEmpty(parameters.Category) && Enum.TryParse<ProductCategory>(parameters.Category, true, out var result))
+        {
+            categoryEnum = result;
+        }
+
+        // use the repo
+        var (items, totalCount) = await _repository.GetPagedProductsAsync(
+            parameters.SearchTerm,
+            categoryEnum,
+            parameters.SortBy,
+            parameters.PageNumber,
+            parameters.PageSize
+        );
+
+        // Mapping
+        var data = _mapper.Map<IEnumerable<ProductResponseDTO>>(items);
+
+        return new PagedResponse<IEnumerable<ProductResponseDTO>>(
+            data,
+            totalCount,
+            parameters.PageNumber,
+            parameters.PageSize
+        );
+    }
 }

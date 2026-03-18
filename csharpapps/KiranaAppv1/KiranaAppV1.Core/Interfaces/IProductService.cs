@@ -13,4 +13,6 @@ public interface IProductService
     Task<ProductResponseDTO> UpdateProduct(int id, ProductRequestDTO productRequest);
 
     Task<bool> DeleteProductAsync(int id);
+
+    Task<PagedResponse<IEnumerable<ProductResponseDTO>>> GetPagedResponseAsync(ProductParameters parameters);
 }

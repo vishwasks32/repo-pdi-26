@@ -50,4 +50,34 @@ public class ProductRepository : IProductRepository
         await _context.SaveChangesAsync();
         return;
     }
+
+    public async Task<(IEnumerable<Product> Items, int TotalCount)> GetPagedProductsAsync(string? searchTerm, ProductCategory? category, string? sortBy, int pageNumber, int pagSize)
+    {
+        var query = _context.Products.AsQueryable();
+
+        // Filter
+        if(category.HasValue)
+        query = query.Where(p=> p.Category == category.Value);
+
+        if(!string.IsNullOrWhiteSpace(searchTerm))
+        query = query.Where(p=> p.Name.Contains(searchTerm));
+
+        // Sort
+        query = sortBy?.ToLower() switch
+        {
+            "name_desc" => query.OrderByDescending(p => p.Name),
+            "price_asc" => query.OrderBy(p=>p.Price),
+            "price_desc" => query.OrderByDescending(p=>p.Price),
+            _ => query.OrderBy(p => p.Name)
+        };
+
+        // Count and Execute
+        var TotalCount = await query.CountAsync();
+        var items = await query
+        .Skip((pageNumber -1) * pagSize)
+        .Take(pagSize)
+        .ToListAsync();
+
+        return(items, TotalCount);
+    }
 }
