@@ -1,0 +1,6 @@
+@randomuser_HostAddress = http://localhost:5278
+
+GET {{randomuser_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
