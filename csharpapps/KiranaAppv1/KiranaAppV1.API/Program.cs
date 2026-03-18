@@ -8,6 +8,7 @@ using KiranaAppV1.Core.Interfaces;
 using KiranaAppV1.Infrastructure.Data;
 using KiranaAppV1.Infrastructure.Repositories;
 using KiranaAppV1.Infrastructure.Services;
+using KiranaAppV1.Infrastructure.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -117,7 +118,26 @@ builder.Services.AddAuthentication(options =>
 //     });
 // });
 
+
 var app = builder.Build();
+
+// Seeding Admin
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    Console.WriteLine("Seeding Begins");
+    try
+    {
+        await ContextSeed.SeedRolesAndAdminAsync(services);
+    }
+    catch (Exception ex)
+    {
+        
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex,"An error occured while seeding the database");
+    }
+}
+// Ends Here
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

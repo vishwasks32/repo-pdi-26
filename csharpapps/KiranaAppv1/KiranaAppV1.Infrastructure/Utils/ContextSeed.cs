@@ -10,6 +10,7 @@ public static class ContextSeed
     {
         var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+        Console.WriteLine("Seeding Roles");
 
         foreach(var role in Enum.GetNames(typeof(UserRole)))
         {

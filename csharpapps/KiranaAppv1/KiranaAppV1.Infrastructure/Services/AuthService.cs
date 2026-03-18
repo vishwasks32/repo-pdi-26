@@ -1,6 +1,7 @@
 using AutoMapper;
 using KiranaAppV1.API.DTOs.Responses;
 using KiranaAppV1.Core.DTOs.Requests;
+using KiranaAppV1.Core.Entities;
 using KiranaAppV1.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
@@ -51,8 +52,17 @@ public class AuthService : IAuthService
 
     public async Task<IdentityResult> RegisterAsync(UserRequestDTO userRequest)
     {
+        if(userRequest.Role.ToString() == UserRole.Admin.ToString())
+        {
+            throw new UnauthorizedAccessException("Cannot Create an Admin User");
+        }
         var user = new IdentityUser { UserName = userRequest.Username, Email= userRequest.Email};
         var result = await _userManager.CreateAsync(user, userRequest.Password);
+        if (result.Succeeded)
+        {
+
+            await _userManager.AddToRoleAsync(user, userRequest.Role);
+        }
         return result;
     }
 }
