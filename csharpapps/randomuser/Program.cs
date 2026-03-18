@@ -8,7 +8,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddHttpClient<IRandomUserService, RandomUserService>(client=>
 {
-    client.BaseAddress = new Uri("https://randomuser.me/");
+    client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
     client.DefaultRequestHeaders.Add("Accept","application/json");
 });
 

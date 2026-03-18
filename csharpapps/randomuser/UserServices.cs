@@ -16,7 +16,7 @@ public class RandomUserService : IRandomUserService
 
     public async Task<UserResult?> GetRandomUserAsync()
     {
-        var response = await _httpClient.GetFromJsonAsync<RandomUserResponse>("api/0.8/");
+        var response = await _httpClient.GetFromJsonAsync<RandomUserResponse>("todos/3");
         Console.WriteLine("Inside GetRandomeUserAsync");
 
         return response?.Results.FirstOrDefault();
