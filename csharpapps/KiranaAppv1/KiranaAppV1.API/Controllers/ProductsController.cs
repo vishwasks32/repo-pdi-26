@@ -69,7 +69,7 @@ public class ProductsController : ControllerBase
     }
 
 
-    [HttpGet]
+    [HttpGet("pages")]
     public async Task<IActionResult> GetAll([FromQuery] ProductParameters parameters)
     {
         var response = await _service.GetPagedResponseAsync(parameters);
