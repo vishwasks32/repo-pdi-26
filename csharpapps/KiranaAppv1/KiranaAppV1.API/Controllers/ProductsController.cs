@@ -3,9 +3,11 @@ using KiranaAppV1.Core.DTOs.Responses;
 using KiranaAppV1.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KiranaAppV1.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/v1/[controller]")]
 public class ProductsController : ControllerBase
@@ -21,6 +23,7 @@ public class ProductsController : ControllerBase
 
     }
 
+    [Authorize(Roles ="Admin,Manager")]
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] ProductRequestDTO productRequest)
     {

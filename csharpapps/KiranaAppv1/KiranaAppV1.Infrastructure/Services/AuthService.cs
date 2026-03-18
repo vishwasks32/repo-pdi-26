@@ -3,11 +3,6 @@ using KiranaAppV1.API.DTOs.Responses;
 using KiranaAppV1.Core.DTOs.Requests;
 using KiranaAppV1.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Linq;
 
 namespace KiranaAppV1.Infrastructure.Services;
 

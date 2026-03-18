@@ -86,6 +86,37 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     c.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
+//     {
+//         Title = "Products Inventory API",
+//         Version = "v1",
+//         Description = "An API for managing products in an inventory system."
+//     });
+//     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.OpenApiSecurityScheme
+//     {
+//         In = Microsoft.OpenApi.ParameterLocation.Header,
+//         Description = "Please enter a valid token",
+//         Name = "Authorization",
+//         Type = Microsoft.OpenApi.SecuritySchemeType.ApiKey
+//     });
+//     c.AddSecurityRequirement(new Microsoft.OpenApi.OpenApiSecurityRequirement
+//     {
+//         {
+//             new Microsoft.OpenApi.OpenApiSecurityScheme
+//             {
+//                 Reference = new Microsoft.OpenApi.Models.OpenApiReference
+//                 {
+//                     Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+//                     Id = "Bearer"
+//                 }
+//             },
+//             new string[] {}
+//         }
+//     });
+// });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
