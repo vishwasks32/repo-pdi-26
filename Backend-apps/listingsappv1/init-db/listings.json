@@ -1,0 +1,192 @@
+[{
+  "_id": {
+    "$oid": "67dd2fe421036760a26e0818"
+  },
+  "name": "Acme Fresh Start Housing",
+  "city": "Chicago",
+  "state": "IL",
+  "photo": "https://angular.dev/assets/images/tutorials/common/bernard-hermant-CLKGGwIBTaY-unsplash.jpg",
+  "availableUnits": 4,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "67dd2ff121036760a26e081a"
+  },
+  "name": "A113 Transitional Housing",
+  "city": "Santa Monica",
+  "state": "CA",
+  "photo": "https://angular.dev/assets/images/tutorials/common/brandon-griggs-wR11KBaB86U-unsplash.jpg",
+  "availableUnits": 0,
+  "wifi": false,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "67dd386c54ad42103f68b310"
+  },
+  "name": "Warm Beds Housing Support",
+  "city": "Juneau",
+  "state": "AK",
+  "photo": "https://angular.dev/assets/images/tutorials/common/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg",
+  "availableUnits": 1,
+  "wifi": false,
+  "laundry": false
+},
+{
+  "_id": {
+    "$oid": "67dd38ed56f325acb39378bc"
+  },
+  "name": "Homesteady Housing",
+  "city": "Chicago",
+  "state": "IL",
+  "photo": "https://angular.dev/assets/images/tutorials/common/ian-macdonald-W8z6aiwfi1E-unsplash.jpg",
+  "availableUnits": 1,
+  "wifi": true,
+  "laundry": false
+},
+{
+  "_id": {
+    "$oid": "6998007b5e73ef51f1f2f8b2"
+  },
+  "name": "Hopeful Apartment Group",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://angular.dev/assets/images/tutorials/common/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
+  "availableUnits": 2,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "6998009d3dd8df3dd259e9d4"
+  },
+  "name": "Seriously Safe Towns",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://angular.dev/assets/images/tutorials/common/phil-hearing-IYfp2Ixe9nM-unsplash.jpg",
+  "availableUnits": 5,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "69980b622f7e45f532837f10"
+  },
+  "name": "Hopeful Housing Solutions",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://angular.dev/assets/images/tutorials/common/r-architecture-GGupkreKwxA-unsplash.jpg",
+  "availableUnits": 2,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1a224f94ae7ab32bb8ad"
+  },
+  "name": "Happy Homes Group",
+  "city": "Gary",
+  "state": "IN",
+  "photo": "https://angular.dev/assets/images/tutorials/common/krzysztof-hepner-978RAXoXnH4-unsplash.jpg",
+  "availableUnits": 1,
+  "wifi": true,
+  "laundry": false
+},
+{
+  "_id": {
+    "$oid": "699c1a7f4f94ae7ab32bb8af"
+  },
+  "name": "Seriously Safe Towns",
+  "city": "Oakland",
+  "state": "CA",
+  "photo": "https://angular.dev/assets/images/tutorials/common/saru-robert-9rP3mxf8qWI-unsplash.jpg",
+  "availableUnits": 10,
+  "wifi": false,
+  "laundry": false
+},
+{
+  "_id": {
+    "$oid": "699c1a924f94ae7ab32bb8b1"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1aa74f94ae7ab32bb8b3"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1ab94f94ae7ab32bb8b5"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1ac94f94ae7ab32bb8b7"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1ada4f94ae7ab32bb8b9"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1aeb4f94ae7ab32bb8bb"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+},
+{
+  "_id": {
+    "$oid": "699c1afc4f94ae7ab32bb8bd"
+  },
+  "name": "Capital Safe Towns",
+  "city": "Portland",
+  "state": "OR",
+  "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+  "availableUnits": 6,
+  "wifi": true,
+  "laundry": true
+}]

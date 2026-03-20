@@ -1,0 +1,30 @@
+services:
+  mongo_db:
+    image: mongo:latest
+    container_name: backend_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=homelistingsdb
+    volumes:
+      - mongo-data:/data/db
+      - ./init-db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  web-app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://backend_mongo:27017/homelistingsdb
+    depends_on:
+      - backend_mongo
+# This section creates the persistent storage on your host machine
+volumes:
+  mongo-data:
+    driver: local
