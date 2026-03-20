@@ -1,7 +1,7 @@
 services:
   mongo_db:
     image: mongo:latest
-    container_name: backend_mongo
+    container_name: mongo_db
     ports:
       - "27017:27017"
     environment:
@@ -21,9 +21,9 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://backend_mongo:27017/homelistingsdb
+      - MONGO_URI=mongodb://mongo_db:27017/homelistingsdb
     depends_on:
-      - backend_mongo
+      - mongo_db
 # This section creates the persistent storage on your host machine
 volumes:
   mongo-data:
