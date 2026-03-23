@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cloudthat</groupId>
-	<artifactId>addressbookv2</artifactId>
+	<artifactId>addressbookv3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>addressbookv2</name>
+	<packaging>jar</packaging>
+	<name>addressbookv3</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -122,7 +122,7 @@
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
-                            <version>1.5.3.FINAL</version>
+                            <version>1.5.3.Final</version>
                         </path>
                         <!-- other annotation processors -->
                     </annotationProcessorPaths>
