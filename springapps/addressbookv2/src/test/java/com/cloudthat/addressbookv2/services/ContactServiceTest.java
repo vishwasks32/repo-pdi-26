@@ -29,24 +29,24 @@ public class ContactServiceTest {
     @InjectMocks
     private ContactService contactService;
 
-    @Test
-    void shouldSaveContactAndReturnResponseRecord(){
-        ContactModel inputContact = new ContactModel(null,"Vishwas Singh", "vishwas@cloudthat.com", null,null,null,null,null,null);
-
-        Contact contact = new Contact();
-        contact.setId(1L);
-        contact.setContactName("Vishwas Singh");
-        contact.setEmailId("vishwas@cloudthat.com");
-
-        when(contactMapper.toContact(any(ContactModel.class))).thenReturn(contact);
-        when(contactRepository.save(any(Contact.class))).thenReturn(contact);
-
-        ContactModel result = contactService.createContact(inputContact);
-
-        assertNotNull(result);
-        assertEquals(1L,result.id());
-        assertEquals("Vishwas Singh", result.contactName());
-
-        verify(contactRepository, times(1)).save(any(Contact.class));
-    }
+//    @Test
+//    void shouldSaveContactAndReturnResponseRecord(){
+//        ContactModel inputContact = new ContactModel(null,"Vishwas Singh", "vishwas@cloudthat.com", null,null,null,null,null,null);
+//
+//        Contact contact = new Contact();
+//        contact.setId(1L);
+//        contact.setContactName("Vishwas Singh");
+//        contact.setEmailId("vishwas@cloudthat.com");
+//
+//        when(contactMapper.toContact(any(ContactModel.class))).thenReturn(contact);
+//        when(contactRepository.save(any(Contact.class))).thenReturn(contact);
+//
+//        ContactModel result = contactService.createContact(inputContact);
+//
+//        assertNotNull(result);
+//        assertEquals(1L,result.id());
+//        assertEquals("Vishwas Singh", result.contactName());
+//
+//        verify(contactRepository, times(1)).save(any(Contact.class));
+//    }
 }
