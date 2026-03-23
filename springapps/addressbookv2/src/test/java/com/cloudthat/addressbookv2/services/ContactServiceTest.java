@@ -20,14 +20,14 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class ContactServiceTest {
 
-    @Mock
-    private ContactRepository contactRepository;
-
-    @MockitoBean
-    private ContactMapper contactMapper;
-
-    @InjectMocks
-    private ContactService contactService;
+//    @Mock
+//    private ContactRepository contactRepository;
+//
+//    @MockitoBean
+//    private ContactMapper contactMapper;
+//
+//    @InjectMocks
+//    private ContactService contactService;
 
 //    @Test
 //    void shouldSaveContactAndReturnResponseRecord(){
