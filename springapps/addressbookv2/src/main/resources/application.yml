@@ -7,21 +7,25 @@ spring:
         name: addressbookv2
     datasource:
         driver-class-name: 'com.mysql.cj.jdbc.Driver'
-        username: 'root'
-        url: 'jdbc:mysql://localhost:3306/contactmanagerdb'
-        password: 'root'
+#        username: 'root'
+#        url: 'jdbc:mysql://localhost:3306/contactmanagerdb'
+#        password: 'root'
+        username: ${DB_USER}
+        url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+        password: ${DB_PASSWORD}
     jpa:
         show_sql: 'true'
         hibernate:
           format_sql: 'true'
-          ddl-auto: 'create-drop'
+#          ddl-auto: 'create-drop'
+          ddl-auto: 'validate'
     mvc:
       problem details:
         enabled: true
 logging:
   level:
     root: INFO
-    com.cloudthat.services: DEBUG
+    com.cloudthat.services: INFO
   file:
     name: 'logs/app-debug.log'
 springdoc:

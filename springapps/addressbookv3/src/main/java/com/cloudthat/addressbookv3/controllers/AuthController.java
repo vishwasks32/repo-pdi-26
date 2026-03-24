@@ -1,0 +1,85 @@
+package com.cloudthat.addressbookv3.controllers;
+
+import com.cloudthat.addressbookv3.dtos.ApiResponse;
+import com.cloudthat.addressbookv3.dtos.JwtRequest;
+import com.cloudthat.addressbookv3.dtos.JwtResponse;
+import com.cloudthat.addressbookv3.dtos.UserModel;
+import com.cloudthat.addressbookv3.entities.User;
+import com.cloudthat.addressbookv3.services.CustomUserDetailsService;
+import com.cloudthat.addressbookv3.services.UserService;
+import com.cloudthat.addressbookv3.utility.JWTUtility;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@Slf4j
+public class AuthController {
+
+    private static final Logger log = LoggerFactory.getLogger(AuthController.class);
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private AuthenticationManager authenticationProvider;
+
+
+    @Autowired
+    private JWTUtility jwtUtility;
+
+    @PostMapping("register")
+    public ResponseEntity<ApiResponse> registeruser(@RequestBody UserModel userModel, final HttpServletRequest request){
+        // add check for email exists in DB
+        if(userService.existsByEmail(userModel.getUsername())){
+            return new ResponseEntity<ApiResponse>(new ApiResponse(false,"Email is already taken!", null, 0L), HttpStatus.BAD_REQUEST);
+        }
+        User registeredUser = userService.registerUser(userModel);
+        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "User created successfully", registeredUser, 0L), HttpStatus.CREATED);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<JwtResponse> authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
+        UsernamePasswordAuthenticationToken unauthenticatedToken = UsernamePasswordAuthenticationToken.unauthenticated(
+                jwtRequest.getUsername(), jwtRequest.getPassword());
+        try {
+            authenticationProvider.authenticate(
+                    unauthenticatedToken
+            );
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<JwtResponse>(new JwtResponse(null,e.getMessage(),false,null,null),HttpStatus.UNAUTHORIZED);
+        }catch(NullPointerException ex) {
+            return new ResponseEntity<JwtResponse>(new JwtResponse(null,"User Name Not Found",false,null,null),HttpStatus.UNAUTHORIZED);
+        }catch(DisabledException ex) {
+            return new ResponseEntity<JwtResponse>(new JwtResponse(null,"User Account is disabled",false,null,null),HttpStatus.UNAUTHORIZED);
+        }
+
+        final UserDetails userDetails
+                = userDetailsService.loadUserByUsername(jwtRequest.getUsername());
+
+        log.debug("User Details: {}",userDetails);
+
+        final String token =
+                jwtUtility.generateToken(userDetails);
+
+        log.debug("JWT Token: {}",token);
+
+        return new ResponseEntity<JwtResponse>(new JwtResponse(token,"Token generated Successfully",true, userDetails.getUsername(),userDetails.getAuthorities().iterator().next().toString()),HttpStatus.OK);
+    }
+
+
+}
