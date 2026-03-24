@@ -5,6 +5,14 @@ server:
 spring:
     application:
         name: addressbookv2
+    config:
+      import: "aws-secretsmanager:/prod/addressbook/mysql"
+    cloud:
+      aws:
+        region:
+          static: us-east-1
+        credentials:
+          instance-profile: true
     datasource:
         driver-class-name: 'com.mysql.cj.jdbc.Driver'
 #        username: 'root'
