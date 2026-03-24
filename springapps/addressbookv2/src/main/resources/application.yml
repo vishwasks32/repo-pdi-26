@@ -6,7 +6,7 @@ spring:
     application:
         name: addressbookv2
     config:
-      import: "aws-secretsmanager:/prod/addressbook/mysql"
+      import: "aws-secretsmanager:prod/addressbook/mysql"
     cloud:
       aws:
         region:
