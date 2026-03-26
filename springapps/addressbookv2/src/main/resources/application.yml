@@ -41,3 +41,15 @@ springdoc:
     path: '/swagger-ui.html'
   api-docs:
     path: '/api/v1/api-docs'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheous"
+  endpoint:
+    prometheous:
+      enabled: true
+  metrics:
+    export:
+      prometheous:
+        enabled: true
