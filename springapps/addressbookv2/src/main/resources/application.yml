@@ -45,11 +45,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health,info,metrics,prometheous"
+        include: "health,info,metrics,prometheus"
   endpoint:
-    prometheous:
+    prometheus:
       enabled: true
   metrics:
     export:
-      prometheous:
+      prometheus:
         enabled: true
